@@ -23,7 +23,7 @@
 - **Pytest**
 - **Redis**
 - **Docker Desktop**
-- （规划）**GitHub Actions**
+- **GitHub Actions**
 - **pytest-html**
 
 ---
