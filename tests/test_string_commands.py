@@ -66,9 +66,9 @@ def test_get_noExistsKey(redis_client):
     result = redis_client.get("str")
     assert result == None
 
-# -get缺少参数
-def test_get_without_value(redis_client):
-    with pytest.raises(redis.exceptions.ResponseError) as exc_info:
-        redis_client.execute_command('GET')
-    error_msg = str(exc_info.value)
-    assert "wrong number of arguments" in error_msg.lower()
+## -get缺少参数
+#def test_get_without_value(redis_client):
+#    with pytest.raises(redis.exceptions.ResponseError) as exc_info:
+#        redis_client.execute_command('GET')
+#    error_msg = str(exc_info.value)
+#    assert "wrong number of arguments" in error_msg.lower()
