@@ -1,12 +1,17 @@
 import redis
 import pytest
-
+import os
 # 这是一个“固件”，每个测试函数开始前都会运行，用来连接Redis
 @pytest.fixture
 def redis_client():
-    client = redis.Redis(host='localhost', port=6380, decode_responses=True)
-    yield client  # 把连接对象传给测试函数
-    client.flushdb()  # 测试结束后清空数据库，保证每个测试独立
+    host = os.getenv("REDIS_HOST", "redis")
+    port = int(os.getenv("REDIS_PORT", "6379"))
+    #本地运行使用set "REDIS_HOST=localhost" && set "REDIS_PORT=6380" && pytest
+    client = redis.Redis(host=host, port=port, decode_responses=True)
+    client.flushdb() 
+    yield client
+    
+    client.flushdb() 
     client.close()
 
 # +set&get一个普通字符串
