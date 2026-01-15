@@ -38,7 +38,7 @@ jobs:
           REDIS_HOST: localhost
           REDIS_PORT: "6379"
         run: |
-          pytest -q tests/ --html=report.html --self-contained-html
+          python -m pytest tests/ -s --html=report.html --self-contained-html
 
       - name: Upload pytest html report
         uses: actions/upload-artifact@v4
